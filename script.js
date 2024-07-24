@@ -1,47 +1,51 @@
 var startTime = 123;
+var player;
+
+// Ensure the YouTube IFrame API is ready
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player("player", {
-    height: "330",
-    width: "330",
-    videoId: "7JQS6H2AXdM",
+  player = new YT.Player('player', {
+    height: '330',
+    width: '330',
+    videoId: '7JQS6H2AXdM',
     events: {
-      onReady: onPlayerReady,
-    },
+      'onReady': onPlayerReady
+    }
   });
 }
+
+// Called when the player is ready
 function onPlayerReady(event) {
   player.mute();
   player.seekTo(startTime);
   player.playVideo();
-  // setTimeout(function () {
-  //   player.unMute();
-  //   player.playVideo();
-  // }, 1000);
   player.unMute();
   player.playVideo();
+
+
+  // Simulate button click after player is ready
+  const button = document.getElementById('startButton');
+  button.click();
+  if (button) {
+    button.click();
+  }
 }
-
-document.getElementById("startButton").addEventListener("click", function () {
-  
-   
-  console.log("startButton clicked:");
-  player.seekTo(startTime);
-
-player.playVideo();
+document.getElementById('startButton').addEventListener('click', function () {
+  console.log('startButton clicked:');
+  if (player && typeof player.seekTo === 'function') {
+    player.seekTo(10, true);
+    player.playVideo();
+  } else {
+    console.error('Player is not ready or seekTo is not a function');
+  }
 });
 
-document.getElementById("replayButton").addEventListener("click", function () {
+document.getElementById('replayButton').addEventListener('click', function () {
   player.seekTo(0);
   player.playVideo();
 });
+// Ensure DOM is fully loaded before trying to access elements
 document.addEventListener('DOMContentLoaded', function() {
-  // Your function here
   console.log('DOM fully loaded and parsed');
   const button = document.getElementById('startButton');
   button.click();
 });
-// window.addEventListener("load", function() {
-//     console.log("Page fully loaded");  
-//     const button = document.getElementById('startButton');
-//     button.click();
-// });
