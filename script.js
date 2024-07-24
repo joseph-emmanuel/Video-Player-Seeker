@@ -10,18 +10,24 @@ function onYouTubeIframeAPIReady() {
   });
 }
 function onPlayerReady(event) {
-  player.mute();
-  player.seekTo(startTime);
-  player.playVideo();
-  setTimeout(function () {
-    player.unMute();
-    player.playVideo();
-  }, 100);
+  // player.mute();
+  // player.seekTo(startTime);
+  // player.playVideo();
+  // setTimeout(function () {
+  //   player.unMute();
+  //   player.playVideo();
+  // }, 100);
 }
 
 document.getElementById("startButton").addEventListener("click", function () {
-  player.seekTo(startTime);
+  
+  setTimeout(function () {
+    console.log("startButton clicked:");
+    player.seekTo(startTime);
+
   player.playVideo();
+  }, 4000);
+  
 });
 
 document.getElementById("replayButton").addEventListener("click", function () {
