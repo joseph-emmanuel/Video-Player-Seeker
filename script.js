@@ -32,6 +32,7 @@ function onPlayerReady(event) {
 document.getElementById('startButton').addEventListener('click', function () {
   console.log('startButton clicked:');
   if (player && typeof player.seekTo === 'function') {
+    console.log('Player is ready and seekTo is a function');
     player.seekTo(10, true);
     player.playVideo();
   } else {
