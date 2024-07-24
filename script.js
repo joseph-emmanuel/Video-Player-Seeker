@@ -32,5 +32,6 @@ window.addEventListener("load", function() {
     console.log("Page fully loaded");
     // onPlayerReady();
     // player.unMute();
-    player.playVideo();
+    const button = document.getElementById('startButton');
+    button.click();
 });
