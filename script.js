@@ -1,8 +1,8 @@
 var startTime = 123;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
-    height: "",
-    width: "",
+    height: "0",
+    width: "0",
     videoId: "7JQS6H2AXdM",
     events: {
       onReady: onPlayerReady,
