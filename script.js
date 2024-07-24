@@ -1,8 +1,8 @@
 var startTime = 123;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
-    height: "0",
-    width: "0",
+    height: "330",
+    width: "330",
     videoId: "7JQS6H2AXdM",
     events: {
       onReady: onPlayerReady,
@@ -27,4 +27,10 @@ document.getElementById("startButton").addEventListener("click", function () {
 document.getElementById("replayButton").addEventListener("click", function () {
   player.seekTo(0);
   player.playVideo();
+});
+window.addEventListener("load", function() {
+    console.log("Page fully loaded");
+    // onPlayerReady();
+    // player.unMute();
+    player.playVideo();
 });
