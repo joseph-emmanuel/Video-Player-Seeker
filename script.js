@@ -18,9 +18,6 @@ function onPlayerReady(event) {
   player.mute();
   player.seekTo(startTime);
   player.playVideo();
-  // player.unMute();
-  // player.playVideo();
-
   // Simulate button click after player is ready
   const button = document.getElementById("startButton");
   button.click();
@@ -28,17 +25,16 @@ function onPlayerReady(event) {
     button.click();
   }
 }
+
 document.getElementById("startButton").addEventListener("click", function () {
   console.log("startButton clicked:");
   if (player && typeof player.seekTo === "function") {
     console.log("Player is ready and seekTo is a function");
-
     player.seekTo(startTime, true);
     player.playVideo();
     setTimeout(function () {
       player.unMute();
     }, 0);
-
     player.playVideo();
     const button = document.getElementById("startButton");
     button.click();
@@ -59,8 +55,7 @@ document.getElementById("volumeControl").addEventListener("input", function () {
   player.playVideo();
 });
 
-//volume buttons
-
+// Volume buttons
 document.getElementById("zeroButton").addEventListener("click", function () {
   player.setVolume(0);
   player.playVideo();
@@ -81,9 +76,23 @@ document.getElementById("fullButton").addEventListener("click", function () {
   player.setVolume(100);
   player.playVideo();
 });
+
 // Ensure DOM is fully loaded before trying to access elements
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded and parsed");
-  // const button = document.getElementById('startButton');
-  // button.click();
+  checkURL();
 });
+function checkURL() {
+  //  add 5sec delay
+  setTimeout(() => {
+    console.log("delay ran out");
+  }, 5000);
+  const urlParams = new URLSearchParams(window.location.search);
+  if (!urlParams.has("key") || urlParams.get("key") !== "123") {
+    window.location.href = "https://www.youtube.com";
+  } else {
+    console.log("key is correct");
+    var div = document.getElementById("content");
+    div.classList.replace("contentNotVisible", "contentVisible");
+  }
+}

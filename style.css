@@ -1,14 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    margin: 0;
-    
-}
+
 
 button {
     background-color: #007BFF;
@@ -29,7 +19,7 @@ button:hover {
     background-color: #0056b3;
 }
 #player {
-    width: 2200px;
+    /* width: 2200px; */
 }
 #controls {
     margin-top: 10px;
@@ -38,4 +28,12 @@ button:hover {
   #pauseBtn,
   #volumeControl {
     margin-right: 10px;
+  }
+
+  .contentNotVisible {
+    display: none !important;
+  }
+
+  .contentVisible {
+    display: flex !important;
   }
