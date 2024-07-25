@@ -6,7 +6,7 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
     height: "200",
     width: "200",
-    videoId: "7JQS6H2AXdM",
+    videoId: "tyYP8G2wc_s",
     events: {
       onReady: onPlayerReady,
     },
@@ -33,7 +33,7 @@ document.getElementById("startButton").addEventListener("click", function () {
   if (player && typeof player.seekTo === "function") {
     console.log("Player is ready and seekTo is a function");
 
-    player.seekTo(10, true);
+    player.seekTo(startTime, true);
     player.playVideo();
     setTimeout(function () {
       player.unMute();
