@@ -1,3 +1,51 @@
+// Wait until the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", function () {
+  checkURL();
+  // Get the modal
+  var modal = document.getElementById("modalDiv");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // Get the button that shows content
+  var showContentBtn = document.getElementById("showContentBtn");
+
+  // Get div1
+  var div1 = document.getElementById("div1");
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // When the user clicks the button to show content
+  showContentBtn.onclick = function () {
+    showContentClose();
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+  console.log("DOM fully loaded and parsed");
+});
+function checkURL() {
+  //  add 5sec delay
+  setTimeout(() => {
+    console.log("delay ran out");
+  }, 5000);
+  const urlParams = new URLSearchParams(window.location.search);
+  if (!urlParams.has("key") || urlParams.get("key") !== "123") {
+    window.location.href = "https://www.youtube.com";
+  } else {
+    console.log("key is correct");
+    var div = document.getElementById("content");
+    div.classList.replace("contentNotVisible", "contentVisible");
+  }
+}
+// player code
 var startTime = 123;
 var player;
 
@@ -25,7 +73,6 @@ function onPlayerReady(event) {
     button.click();
   }
 }
-
 document.getElementById("startButton").addEventListener("click", function () {
   console.log("startButton clicked:");
   if (player && typeof player.seekTo === "function") {
@@ -42,7 +89,6 @@ document.getElementById("startButton").addEventListener("click", function () {
     console.error("Player is not ready or seekTo is not a function");
   }
 });
-
 document.getElementById("replayButton").addEventListener("click", function () {
   player.seekTo(0);
   player.playVideo();
@@ -59,40 +105,32 @@ document.getElementById("volumeControl").addEventListener("input", function () {
 document.getElementById("zeroButton").addEventListener("click", function () {
   player.setVolume(0);
   player.playVideo();
+  showContentClose();
 });
 document.getElementById("tweneButton").addEventListener("click", function () {
   player.setVolume(25);
   player.playVideo();
+  showContentClose();
 });
 document.getElementById("fiftyButton").addEventListener("click", function () {
   player.setVolume(50);
   player.playVideo();
+  showContentClose();
 });
 document.getElementById("sevenButton").addEventListener("click", function () {
   player.setVolume(75);
   player.playVideo();
+  showContentClose();
 });
 document.getElementById("fullButton").addEventListener("click", function () {
   player.setVolume(100);
   player.playVideo();
+  showContentClose();
 });
 
-// Ensure DOM is fully loaded before trying to access elements
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM fully loaded and parsed");
-  checkURL();
-});
-function checkURL() {
-  //  add 5sec delay
-  setTimeout(() => {
-    console.log("delay ran out");
-  }, 5000);
-  const urlParams = new URLSearchParams(window.location.search);
-  if (!urlParams.has("key") || urlParams.get("key") !== "123") {
-    window.location.href = "https://www.youtube.com";
-  } else {
-    console.log("key is correct");
-    var div = document.getElementById("content");
-    div.classList.replace("contentNotVisible", "contentVisible");
-  }
+function showContentClose() {
+  var modal = document.getElementById("modalDiv");
+  var div1 = document.getElementById("div1");
+  div1.style.display = "block"; // Show div1
+  modal.style.display = "none"; // Hide the modal
 }

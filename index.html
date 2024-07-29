@@ -3,28 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YouTube Player</title>
+    <title>Modal Example</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="contentNotVisible" id="content">
-      <div>
-        <div id="player"></div>
-        <br /><br />
-        <button id="startButton">Start</button>
-        <button id="replayButton">Replay</button>
-        <button id="pauseButton">Pause</button>
-        <input type="range" id="volumeControl" min="0" max="100" value="100" />
-        <br /><br />
-        <p>Please select a volume to start the video</p>
+    <div id="div1">
+      <div class="contentNotVisible" id="content">
+        <div>
+          <div id="player"></div>
+          <br /><br />
+          <button id="startButton">Start</button>
+          <button id="replayButton">Replay</button>
+          <button id="pauseButton">Pause</button>
+          <input
+            type="range"
+            id="volumeControl"
+            min="0"
+            max="100"
+            value="100"
+          />
+          <br /><br />
+        </div>
+      </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="modalDiv" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>This page will play audio, choose your desired volume</p>
         <button id="zeroButton">0</button>
         <button id="tweneButton">25</button>
         <button id="fiftyButton">50</button>
         <button id="sevenButton">75</button>
         <button id="fullButton">100</button>
+        <!-- <button id="showContentBtn">Show Content</button> -->
       </div>
     </div>
-
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js"></script>
   </body>
